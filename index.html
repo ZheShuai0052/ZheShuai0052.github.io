@@ -329,6 +329,120 @@
         letter-spacing: 0.12em;
       }
 
+      .work-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .project-card {
+        position: relative;
+        display: flex;
+        min-height: 100%;
+        flex-direction: column;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 253, 248, 0.9);
+        box-shadow: 0 18px 46px rgba(34, 31, 24, 0.08);
+      }
+
+      .project-media {
+        position: relative;
+        display: grid;
+        min-height: 240px;
+        place-items: center;
+        border-bottom: 1px solid var(--line);
+        background:
+          linear-gradient(180deg, rgba(42, 127, 143, 0.08), rgba(247, 245, 238, 0.88)),
+          #f8fbfa;
+      }
+
+      .project-media img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        max-height: 280px;
+        object-fit: contain;
+        padding: 42px 18px 28px;
+      }
+
+      .project-tag {
+        position: absolute;
+        top: 16px;
+        left: 16px;
+        z-index: 1;
+        padding: 7px 11px;
+        border: 1px solid rgba(42, 127, 143, 0.28);
+        border-radius: 999px;
+        background: rgba(255, 253, 248, 0.9);
+        color: var(--cyan);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+      }
+
+      .project-badge {
+        position: absolute;
+        right: 16px;
+        bottom: 14px;
+        padding: 7px 11px;
+        border: 1px solid rgba(167, 109, 35, 0.28);
+        border-radius: 999px;
+        background: rgba(255, 253, 248, 0.92);
+        color: var(--amber);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+      }
+
+      .project-body {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        padding: 26px;
+      }
+
+      .project-body h3 {
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 21px;
+        line-height: 1.28;
+      }
+
+      .project-body p {
+        margin: 15px 0 0;
+        color: var(--muted);
+        font-size: 15px;
+      }
+
+      .project-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: auto;
+        padding-top: 24px;
+      }
+
+      .project-link {
+        display: inline-flex;
+        min-height: 38px;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 13px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 253, 248, 0.72);
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 760;
+        text-decoration: none;
+      }
+
+      .project-link:hover {
+        border-color: rgba(42, 127, 143, 0.48);
+        color: var(--cyan);
+      }
+
       .list {
         display: grid;
         gap: 22px;
@@ -528,7 +642,8 @@
         }
 
         .metrics,
-        .focus-grid {
+        .focus-grid,
+        .work-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
       }
@@ -555,7 +670,8 @@
         }
 
         .metrics,
-        .focus-grid {
+        .focus-grid,
+        .work-grid {
           grid-template-columns: 1fr;
         }
 
@@ -581,6 +697,7 @@
         </div>
         <nav class="nav">
           <a href="#research">Research</a>
+          <a href="#work">Work</a>
           <a href="#publications">Publications</a>
           <a href="#experience">Experience</a>
           <a href="#education">Education</a>
@@ -678,6 +795,61 @@
                   Backdoor vulnerabilities in autonomous-driving video world models and evidence-grounded
                   evaluation of LLMs in high-stakes construction supervision scenarios.
                 </p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="work">
+          <div class="wrap">
+            <div class="section-head">
+              <div class="section-kicker">Selected Work</div>
+              <div>
+                <h2>Project Highlights</h2>
+                <p class="section-intro">
+                  A compact view of recent papers and benchmarks, with project pages for figures,
+                  abstracts, code, and reproducibility details.
+                </p>
+              </div>
+            </div>
+            <div class="work-grid">
+              <article class="project-card">
+                <div class="project-media">
+                  <span class="project-tag">ARXIV 2026</span>
+                  <img src="assets/projects/baddreamer-card.webp" alt="BadDreamer pipeline overview figure.">
+                  <span class="project-badge">92.5% WM-ASR</span>
+                </div>
+                <div class="project-body">
+                  <h3>BadDreamer: Transferable Backdoor Attacks against Video World Models for Autonomous Driving</h3>
+                  <p>
+                    A spatio-temporal backdoor attack that poisons video world-model transition
+                    dynamics, corrupts future-aware representations, and transfers unsafe behavior
+                    to downstream autonomous-driving planning.
+                  </p>
+                  <div class="project-actions">
+                    <a class="project-link" href="https://arxiv.org/abs/2606.21172" target="_blank" rel="noopener">Paper</a>
+                    <a class="project-link" href="https://zheshuai0052.github.io/BadDreamer/" target="_blank" rel="noopener">Project</a>
+                  </div>
+                </div>
+              </article>
+              <article class="project-card">
+                <div class="project-media">
+                  <span class="project-tag">BENCHMARK 2026</span>
+                  <img src="assets/projects/cesbench-card.webp" alt="CESBench benchmark construction pipeline figure.">
+                  <span class="project-badge">10,144 Qs</span>
+                </div>
+                <div class="project-body">
+                  <h3>CESBench: A Multi-Task Knowledge Benchmark for Construction Engineering Supervision</h3>
+                  <p>
+                    A regulation-intensive benchmark for evaluating LLMs on evidence-grounded
+                    compliance, safety reasoning, and field-oriented decision making in construction
+                    engineering supervision.
+                  </p>
+                  <div class="project-actions">
+                    <a class="project-link" href="https://zheshuai0052.github.io/CESBench/" target="_blank" rel="noopener">Project</a>
+                    <a class="project-link" href="https://github.com/HuaiNanPro/CESBench" target="_blank" rel="noopener">Code</a>
+                  </div>
+                </div>
               </article>
             </div>
           </div>
