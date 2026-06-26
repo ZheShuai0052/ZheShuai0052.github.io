@@ -1,0 +1,917 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="Zhe SHUAI is an undergraduate researcher at Shanghai Jiao Tong University working on world models, 3D scene reconstruction, trustworthy AI, and AI agents."
+    >
+    <title>Zhe SHUAI</title>
+    <style>
+      :root {
+        --paper: #f7f5ee;
+        --paper-strong: #fffdf8;
+        --ink: #191919;
+        --muted: #6b665d;
+        --line: #d8d1c3;
+        --cyan: #2a7f8f;
+        --green: #2e704f;
+        --amber: #a76d23;
+        --rose: #8f4d50;
+        --shadow: 0 24px 70px rgba(34, 31, 24, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background:
+          linear-gradient(90deg, rgba(42, 127, 143, 0.07) 0 1px, transparent 1px 100%),
+          linear-gradient(180deg, rgba(42, 127, 143, 0.05) 0 1px, transparent 1px 100%),
+          var(--paper);
+        background-size: 44px 44px;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.58;
+      }
+
+      a {
+        color: inherit;
+        text-underline-offset: 0.18em;
+      }
+
+      a:hover {
+        color: var(--cyan);
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: 280px minmax(0, 1fr);
+        min-height: 100vh;
+      }
+
+      .rail {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        gap: 34px;
+        padding: 46px 34px;
+        border-right: 1px solid var(--line);
+        background: rgba(255, 253, 248, 0.72);
+        backdrop-filter: blur(16px);
+      }
+
+      .mark {
+        font-family: Georgia, "Times New Roman", serif;
+      }
+
+      .mark a {
+        text-decoration: none;
+      }
+
+      .mark strong {
+        display: block;
+        font-size: 28px;
+        line-height: 1.02;
+        letter-spacing: 0;
+      }
+
+      .mark span {
+        display: block;
+        margin-top: 10px;
+        color: var(--muted);
+        font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
+      .nav {
+        display: grid;
+        gap: 9px;
+      }
+
+      .nav a {
+        width: fit-content;
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 650;
+        letter-spacing: 0.06em;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      .nav a:hover {
+        color: var(--ink);
+      }
+
+      .rail-contact {
+        margin-top: auto;
+        display: grid;
+        gap: 9px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .rail-contact a {
+        width: fit-content;
+      }
+
+      main {
+        min-width: 0;
+      }
+
+      section {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .wrap {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 72px 56px;
+      }
+
+      .hero {
+        min-height: 100vh;
+        display: grid;
+        align-items: center;
+      }
+
+      .hero .wrap {
+        width: 100%;
+        padding-top: 48px;
+        padding-bottom: 48px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.04fr) minmax(300px, 0.72fr);
+        gap: 46px;
+        align-items: center;
+      }
+
+      .eyebrow {
+        margin: 0 0 20px;
+        color: var(--green);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        font-weight: 700;
+        letter-spacing: 0;
+      }
+
+      h1 {
+        max-width: 760px;
+        font-size: clamp(48px, 8vw, 104px);
+        line-height: 0.92;
+      }
+
+      .lead {
+        max-width: 760px;
+        margin: 28px 0 0;
+        color: #332f29;
+        font-size: clamp(19px, 2.1vw, 29px);
+        line-height: 1.28;
+      }
+
+      .summary {
+        max-width: 750px;
+        margin: 26px 0 0;
+        color: var(--muted);
+        font-size: 16px;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-top: 32px;
+      }
+
+      .button {
+        display: inline-flex;
+        min-height: 44px;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 16px;
+        border: 1px solid var(--ink);
+        color: var(--ink);
+        background: var(--ink);
+        color: var(--paper-strong);
+        font-size: 14px;
+        font-weight: 760;
+        text-decoration: none;
+      }
+
+      .button.secondary {
+        border-color: var(--line);
+        background: rgba(255, 253, 248, 0.72);
+        color: var(--ink);
+      }
+
+      .hero-visual {
+        margin: 0;
+        border: 1px solid var(--line);
+        background: var(--paper-strong);
+        box-shadow: var(--shadow);
+      }
+
+      .hero-visual img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        object-fit: cover;
+      }
+
+      .metrics {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1px;
+        margin-top: 42px;
+        border: 1px solid var(--line);
+        background: var(--line);
+      }
+
+      .metric {
+        min-height: 124px;
+        padding: 22px;
+        background: rgba(255, 253, 248, 0.86);
+      }
+
+      .metric strong {
+        display: block;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 34px;
+        line-height: 1;
+      }
+
+      .metric span {
+        display: block;
+        margin-top: 10px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .section-head {
+        display: grid;
+        grid-template-columns: 220px minmax(0, 1fr);
+        gap: 34px;
+        align-items: start;
+        margin-bottom: 34px;
+      }
+
+      .section-kicker {
+        color: var(--green);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      h2 {
+        font-size: clamp(30px, 4.2vw, 54px);
+        line-height: 1;
+      }
+
+      .section-intro {
+        margin: 16px 0 0;
+        max-width: 760px;
+        color: var(--muted);
+      }
+
+      .focus-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1px;
+        border: 1px solid var(--line);
+        background: var(--line);
+      }
+
+      .focus-item {
+        min-height: 260px;
+        padding: 26px;
+        background: rgba(255, 253, 248, 0.86);
+      }
+
+      .focus-item h3 {
+        font-size: 24px;
+        line-height: 1.12;
+      }
+
+      .focus-item p {
+        margin: 16px 0 0;
+        color: var(--muted);
+        font-size: 15px;
+      }
+
+      .focus-index {
+        display: block;
+        margin-bottom: 36px;
+        color: var(--amber);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+      }
+
+      .list {
+        display: grid;
+        gap: 22px;
+      }
+
+      .item {
+        display: grid;
+        grid-template-columns: 180px minmax(0, 1fr);
+        gap: 30px;
+        padding: 0 0 22px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .item:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
+      }
+
+      .meta {
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 750;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .item h3 {
+        font-size: 24px;
+        line-height: 1.18;
+      }
+
+      .item p {
+        margin: 10px 0 0;
+        color: var(--muted);
+      }
+
+      .item ul {
+        margin: 12px 0 0;
+        padding-left: 19px;
+        color: var(--muted);
+      }
+
+      .item li + li {
+        margin-top: 8px;
+      }
+
+      .pub-list {
+        border-top: 1px solid var(--line);
+      }
+
+      .pub {
+        display: grid;
+        grid-template-columns: 180px minmax(0, 1fr);
+        gap: 30px;
+        padding: 22px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .pub-title {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 22px;
+        font-weight: 700;
+        line-height: 1.2;
+      }
+
+      .authors,
+      .venue {
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 15px;
+      }
+
+      .authors strong {
+        color: var(--ink);
+      }
+
+      .split {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 44px;
+      }
+
+      .compact-list {
+        display: grid;
+        gap: 14px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .compact-list li {
+        padding-top: 14px;
+        border-top: 1px solid var(--line);
+      }
+
+      .compact-list strong {
+        display: block;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 20px;
+        line-height: 1.15;
+      }
+
+      .compact-list span {
+        display: block;
+        margin-top: 5px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .contact-panel {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 260px;
+        gap: 34px;
+        align-items: end;
+        padding: 34px;
+        border: 1px solid var(--line);
+        background: rgba(255, 253, 248, 0.86);
+      }
+
+      .contact-panel p {
+        margin: 14px 0 0;
+        max-width: 680px;
+        color: var(--muted);
+      }
+
+      .contact-links {
+        display: grid;
+        gap: 10px;
+        justify-items: start;
+      }
+
+      .footer {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      @media (max-width: 980px) {
+        .layout {
+          display: block;
+        }
+
+        .rail {
+          position: sticky;
+          z-index: 5;
+          height: auto;
+          gap: 16px;
+          padding: 16px 22px;
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+
+        .mark span,
+        .rail-contact {
+          display: none;
+        }
+
+        .mark strong {
+          font-size: 22px;
+        }
+
+        .nav {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px 14px;
+          overflow-x: visible;
+          padding-bottom: 0;
+        }
+
+        .nav a {
+          flex: 0 0 auto;
+          font-size: 12px;
+        }
+
+        .wrap {
+          padding: 58px 24px;
+        }
+
+        .hero {
+          min-height: auto;
+        }
+
+        .hero-grid,
+        .section-head,
+        .item,
+        .pub,
+        .split,
+        .contact-panel {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-visual {
+          order: -1;
+        }
+
+        .hero-visual img {
+          aspect-ratio: 16 / 10;
+        }
+
+        .metrics,
+        .focus-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 620px) {
+        .wrap {
+          padding: 46px 18px;
+        }
+
+        h1 {
+          font-size: 52px;
+        }
+
+        .lead {
+          font-size: 21px;
+        }
+
+        .hero-actions {
+          display: grid;
+        }
+
+        .button {
+          width: 100%;
+        }
+
+        .metrics,
+        .focus-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .metric,
+        .focus-item {
+          min-height: auto;
+        }
+
+        .contact-panel {
+          padding: 24px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout">
+      <aside class="rail" aria-label="Site navigation">
+        <div class="mark">
+          <a href="#top">
+            <strong>Zhe SHUAI</strong>
+            <span>World models, 3D reconstruction, trustworthy AI, and AI agents.</span>
+          </a>
+        </div>
+        <nav class="nav">
+          <a href="#research">Research</a>
+          <a href="#publications">Publications</a>
+          <a href="#experience">Experience</a>
+          <a href="#education">Education</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <div class="rail-contact">
+          <a href="mailto:shuaizhe@sjtu.edu.cn">shuaizhe@sjtu.edu.cn</a>
+          <a href="assets/Zhe_SHUAI_CV.pdf">Download CV</a>
+          <span>Last updated June 2026</span>
+        </div>
+      </aside>
+
+      <main>
+        <section class="hero" id="top">
+          <div class="wrap">
+            <div class="hero-grid">
+              <div>
+                <p class="eyebrow">Shanghai Jiao Tong University</p>
+                <h1>Zhe SHUAI</h1>
+                <p class="lead">
+                  Undergraduate researcher working on world models, 3D scene reconstruction,
+                  and robust AI systems for embodied decision-making.
+                </p>
+                <p class="summary">
+                  I am a Bachelor of Architecture student at Shanghai Jiao Tong University,
+                  with a minor in Computer Science and Technology and graduate-level training
+                  through the MITx MicroMasters Program in Statistics and Data Science. My
+                  recent work spans hidden-dynamics adaptation, autonomous-driving video world
+                  models, compositional scene reconstruction, and domain-specific LLM evaluation.
+                </p>
+                <div class="hero-actions">
+                  <a class="button" href="mailto:shuaizhe@sjtu.edu.cn">Email me</a>
+                  <a class="button secondary" href="assets/Zhe_SHUAI_CV.pdf">Download CV</a>
+                </div>
+              </div>
+              <figure class="hero-visual" aria-label="Abstract computational research visual">
+                <img src="assets/research-hero.png" alt="Abstract AI research visualization with point clouds, trajectories, and graph structures.">
+              </figure>
+            </div>
+
+            <div class="metrics" aria-label="Selected metrics">
+              <div class="metric">
+                <strong>1/25</strong>
+                <span>Current cohort ranking at SJTU.</span>
+              </div>
+              <div class="metric">
+                <strong>90.83</strong>
+                <span>GPA on a 100-point scale.</span>
+              </div>
+              <div class="metric">
+                <strong>4</strong>
+                <span>Current or recent research projects.</span>
+              </div>
+              <div class="metric">
+                <strong>300K</strong>
+                <span>USD angel investment raised as co-founder.</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="research">
+          <div class="wrap">
+            <div class="section-head">
+              <div class="section-kicker">Research</div>
+              <div>
+                <h2>Current Interests</h2>
+                <p class="section-intro">
+                  I focus on AI systems that perceive, predict, and adapt in the physical world,
+                  with an emphasis on reliable behavior under hidden shifts and incomplete observations.
+                </p>
+              </div>
+            </div>
+            <div class="focus-grid">
+              <article class="focus-item">
+                <span class="focus-index">01</span>
+                <h3>World models under hidden dynamics shifts</h3>
+                <p>
+                  Failure-driven latent action refinement for action-conditioned world models,
+                  real-time belief revision, inverse action verification, and dynamic candidate reranking.
+                </p>
+              </article>
+              <article class="focus-item">
+                <span class="focus-index">02</span>
+                <h3>Compositional 3D scene reconstruction</h3>
+                <p>
+                  Video-to-layout understanding, object-centric scene graphs, multi-view partial geometry,
+                  and in-place completion from casual indoor videos.
+                </p>
+              </article>
+              <article class="focus-item">
+                <span class="focus-index">03</span>
+                <h3>Trustworthy and domain-aware AI</h3>
+                <p>
+                  Backdoor vulnerabilities in autonomous-driving video world models and evidence-grounded
+                  evaluation of LLMs in high-stakes construction supervision scenarios.
+                </p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="publications">
+          <div class="wrap">
+            <div class="section-head">
+              <div class="section-kicker">Publications</div>
+              <div>
+                <h2>Publications and Preprints</h2>
+                <p class="section-intro">
+                  Manuscripts include work under review, submitted work, and ongoing projects in preparation.
+                </p>
+              </div>
+            </div>
+            <div class="pub-list">
+              <article class="pub">
+                <div class="meta">Conference, under review</div>
+                <div>
+                  <div class="pub-title">BadDreamer: Backdoor Attacks against World Models for Autonomous Driving</div>
+                  <div class="authors"><strong>Shuai, Z.</strong> *, Xie, X. *, et al.</div>
+                  <div class="venue">Manuscript under review, Advances in Neural Information Processing Systems, 2026.</div>
+                </div>
+              </article>
+              <article class="pub">
+                <div class="meta">Conference, in preparation</div>
+                <div>
+                  <div class="pub-title">FLARE-WAM: Failure-driven Latent Action Refinement for Hidden Rule Adaptation</div>
+                  <div class="authors"><strong>Shuai, Z.</strong>, Zou, Y., et al.</div>
+                  <div class="venue">Manuscript in preparation for submission to ICLR 2027.</div>
+                </div>
+              </article>
+              <article class="pub">
+                <div class="meta">Conference, in preparation</div>
+                <div>
+                  <div class="pub-title">Video-guided Compositional 3D Scene Reconstruction and In-place Completion</div>
+                  <div class="authors"><strong>Shuai, Z.</strong> *, Chen, Y. *, Ni, B., et al.</div>
+                  <div class="venue">Manuscript in preparation for submission to ICLR 2027.</div>
+                </div>
+              </article>
+              <article class="pub">
+                <div class="meta">Journal, submitted</div>
+                <div>
+                  <div class="pub-title">CESBench: A Multi-task Knowledge Benchmark for Evaluating Large Language Models in Construction Engineering Supervision</div>
+                  <div class="authors">Xie, X., Ran, X., Wu, H., Dong, Z., Xia, B., Jiang, Y., Wang, Z., Sun, J., <strong>Shuai, Z.</strong>, Zhu, A., Zheng, G., Kong, L., and Xue, G.</div>
+                  <div class="venue">Manuscript submitted to IEEE Transactions on Knowledge and Data Engineering, 2026.</div>
+                </div>
+              </article>
+              <article class="pub">
+                <div class="meta">Patent, 2024</div>
+                <div>
+                  <div class="pub-title">AI-powered Urban Carbon Emission Reduction Modeling System</div>
+                  <div class="venue">Remote-sensing PV identification, emission estimation, and ArcGIS integration.</div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="experience">
+          <div class="wrap">
+            <div class="section-head">
+              <div class="section-kicker">Experience</div>
+              <div>
+                <h2>Research Experience</h2>
+                <p class="section-intro">
+                  Selected projects across embodied AI, spatial intelligence, autonomous driving, and LLM evaluation.
+                </p>
+              </div>
+            </div>
+            <div class="list">
+              <article class="item">
+                <div class="meta">Apr. 2026 - Present</div>
+                <div>
+                  <h3>FLARE-WAM: Failure-Driven World Action Models under Hidden Dynamics Shifts</h3>
+                  <p>Research Assistant, Prof. YingTian Zou, SJTU SAI.</p>
+                  <ul>
+                    <li>Formulated failure modes in action-conditioned world models caused by hidden dynamics shifts.</li>
+                    <li>Engineered a closed-loop framework integrating latent residuals, inverse action verification, and dynamic candidate reranking.</li>
+                    <li>Built and evaluated VRST-PuzzleGrid with OOD-rule and OOD-composition splits under a strict no-oracle-target protocol.</li>
+                  </ul>
+                </div>
+              </article>
+              <article class="item">
+                <div class="meta">Apr. 2026 - Present</div>
+                <div>
+                  <h3>Vid2Layout: Compositional 3D Scene Reconstruction</h3>
+                  <p>Research Assistant, Prof. BingBing Ni, SJTU Intelligent Media Lab.</p>
+                  <ul>
+                    <li>Designed a multi-stage video-to-3D reconstruction pipeline with keyframe sampling, open-vocabulary object discovery, mask-track association, depth fusion, and 2D-to-3D grounding.</li>
+                    <li>Built object-level multi-view partial geometry representations and video-conditioned spatial anchors.</li>
+                    <li>Explored in-place completion and memory-based training, improving multi-view geometry recovery over single-view input in preliminary ablations.</li>
+                  </ul>
+                </div>
+              </article>
+              <article class="item">
+                <div class="meta">Nov. 2025 - May 2026</div>
+                <div>
+                  <h3>BadDreamer: Backdoor Attacks on Autonomous Driving Video World Models</h3>
+                  <p>Research Assistant, Prof. Guanjie Zheng, SJTU CILAB.</p>
+                  <ul>
+                    <li>Studied spatio-temporal trigger injection and semantic erasure attacks for future prediction.</li>
+                    <li>Designed a stealthy trigger-target backdoor pair using image inpainting for target disappearance supervision.</li>
+                    <li>Built an end-to-end evaluation pipeline, achieving 92.5% WM-ASR and 90.3% Action-ASR with 5% poisoned data.</li>
+                  </ul>
+                </div>
+              </article>
+              <article class="item">
+                <div class="meta">Oct. 2025 - Feb. 2026</div>
+                <div>
+                  <h3>CESBench: Construction Engineering Supervision Benchmark</h3>
+                  <p>Research Assistant, Prof. Guanjie Zheng, SJTU CILAB.</p>
+                  <ul>
+                    <li>Designed a data pipeline integrating RAG and expert-in-the-loop annotation from national standards and field logs.</li>
+                    <li>Evaluated 18 frontier LLMs in high-stakes construction supervision scenarios in collaboration with Shanghai Jianke.</li>
+                    <li>Developed evidence-grounded metrics including Strict Compliance Score and Pass@k.</li>
+                  </ul>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap">
+            <div class="section-head">
+              <div class="section-kicker">Industry</div>
+              <div>
+                <h2>Professional Experience</h2>
+              </div>
+            </div>
+            <div class="list">
+              <article class="item">
+                <div class="meta">Sept. 2025 - Dec. 2025</div>
+                <div>
+                  <h3>Apple Inc., Product Manager Intern</h3>
+                  <p>Shanghai, China.</p>
+                  <ul>
+                    <li>Conducted an AI Glasses industry landscape study covering Micro-LED, optical solutions, and supply-chain dynamics.</li>
+                    <li>Led AppleCare+ competitive analysis across pricing ratio, coverage scope, value-added benefits, regional terms, and repair fees.</li>
+                    <li>Mapped serial number management workflows across hardware production and after-sales service.</li>
+                  </ul>
+                </div>
+              </article>
+              <article class="item">
+                <div class="meta">Aug. 2024 - Aug. 2025</div>
+                <div>
+                  <h3>Shanghai Jiangran Technology Co., Ltd., Co-Founder</h3>
+                  <p>Vertical-industry AI Agent company, Shanghai, China.</p>
+                  <ul>
+                    <li>Defined the core interaction paradigm and managed the product lifecycle from concept to MVP deployment.</li>
+                    <li>Delivered a customized marketing agent for a top-tier pharmaceutical firm, generating CNY 100,000 in early revenue.</li>
+                    <li>Raised USD 300,000 in angel investment from MiraclePlus.</li>
+                  </ul>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="education">
+          <div class="wrap">
+            <div class="section-head">
+              <div class="section-kicker">Education</div>
+              <div>
+                <h2>Education and Skills</h2>
+              </div>
+            </div>
+            <div class="split">
+              <div>
+                <ul class="compact-list">
+                  <li>
+                    <strong>Shanghai Jiao Tong University</strong>
+                    <span>Bachelor of Architecture, Minor in Computer Science and Technology. Expected graduation: June 2027.</span>
+                    <span>GPA: 90.83/100. Ranking: 1/25.</span>
+                  </li>
+                  <li>
+                    <strong>MITx MicroMasters Program in Statistics and Data Science</strong>
+                    <span>Graduate-level online course program, June 2025 - Present.</span>
+                    <span>Coursework includes probability, machine learning, statistics, and statistical modeling.</span>
+                  </li>
+                  <li>
+                    <strong>Awards and Honors</strong>
+                    <span>National Scholarship, 2024 and 2025. Xiaomi Scholarship, 2023. Gold Award, China International College Students' Innovation Competition, 2024.</span>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <ul class="compact-list">
+                  <li>
+                    <strong>Programming</strong>
+                    <span>Python, C++.</span>
+                  </li>
+                  <li>
+                    <strong>Technical Stack</strong>
+                    <span>PyTorch, TensorFlow, HTML, CSS.</span>
+                  </li>
+                  <li>
+                    <strong>Relevant Coursework</strong>
+                    <span>Data Structures, Operating Systems, Software Engineering, Big Data Algorithms and Analytics, Computer Networks, Machine Learning.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="contact">
+          <div class="wrap">
+            <div class="contact-panel">
+              <div>
+                <div class="section-kicker">Contact</div>
+                <h2>Get in touch</h2>
+                <p>
+                  I am interested in conversations around world models, spatial intelligence,
+                  trustworthy AI systems, and research opportunities at the intersection of
+                  perception, planning, and adaptation.
+                </p>
+              </div>
+              <div class="contact-links">
+                <a class="button" href="mailto:shuaizhe@sjtu.edu.cn">shuaizhe@sjtu.edu.cn</a>
+                <a class="button secondary" href="assets/Zhe_SHUAI_CV.pdf">Download CV</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap footer">
+            <span>Copyright 2026 Zhe SHUAI. Built as a static academic homepage.</span>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
