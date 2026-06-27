@@ -131,6 +131,7 @@
 
       section {
         border-bottom: 1px solid var(--line);
+        scroll-margin-top: 24px;
       }
 
       .wrap {
@@ -296,6 +297,15 @@
         color: var(--muted);
       }
 
+      .section-subtitle {
+        margin: 12px 0 0;
+        color: var(--green);
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
       .focus-grid {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -332,76 +342,25 @@
 
       .work-grid {
         display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 22px;
       }
 
       .project-card {
-        position: relative;
         display: flex;
         min-height: 100%;
         flex-direction: column;
-        overflow: hidden;
+        padding: 26px;
         border: 1px solid var(--line);
         border-radius: 8px;
         background: rgba(255, 253, 248, 0.9);
         box-shadow: 0 18px 46px rgba(34, 31, 24, 0.08);
       }
 
-      .project-media {
-        position: relative;
-        display: grid;
-        min-height: 240px;
-        place-items: center;
-        border-bottom: 1px solid var(--line);
-        background:
-          linear-gradient(180deg, rgba(42, 127, 143, 0.08), rgba(247, 245, 238, 0.88)),
-          #f8fbfa;
-      }
-
-      .project-media img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        max-height: 280px;
-        object-fit: contain;
-        padding: 42px 18px 28px;
-      }
-
-      .project-tag {
-        position: absolute;
-        top: 16px;
-        left: 16px;
-        z-index: 1;
-        padding: 7px 11px;
-        border: 1px solid rgba(42, 127, 143, 0.28);
-        border-radius: 999px;
-        background: rgba(255, 253, 248, 0.9);
-        color: var(--cyan);
-        font-size: 12px;
-        font-weight: 800;
-        letter-spacing: 0.08em;
-      }
-
-      .project-badge {
-        position: absolute;
-        right: 16px;
-        bottom: 14px;
-        padding: 7px 11px;
-        border: 1px solid rgba(167, 109, 35, 0.28);
-        border-radius: 999px;
-        background: rgba(255, 253, 248, 0.92);
-        color: var(--amber);
-        font-size: 12px;
-        font-weight: 800;
-        letter-spacing: 0.04em;
-      }
-
       .project-body {
         display: flex;
         flex: 1;
         flex-direction: column;
-        padding: 26px;
       }
 
       .project-body h3 {
@@ -416,32 +375,35 @@
         font-size: 15px;
       }
 
-      .project-actions {
+      .project-status {
+        width: fit-content;
+        margin-bottom: 22px;
+        padding: 7px 11px;
+        border: 1px solid rgba(42, 127, 143, 0.28);
+        border-radius: 999px;
+        background: rgba(255, 253, 248, 0.9);
+        color: var(--cyan);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+      }
+
+      .project-tags {
         display: flex;
         flex-wrap: wrap;
-        gap: 10px;
+        gap: 8px;
         margin-top: auto;
         padding-top: 24px;
       }
 
-      .project-link {
-        display: inline-flex;
-        min-height: 38px;
-        align-items: center;
-        justify-content: center;
-        padding: 8px 13px;
+      .project-tags span {
+        padding: 6px 9px;
         border: 1px solid var(--line);
-        border-radius: 8px;
-        background: rgba(255, 253, 248, 0.72);
+        border-radius: 999px;
         color: var(--muted);
-        font-size: 13px;
-        font-weight: 760;
-        text-decoration: none;
-      }
-
-      .project-link:hover {
-        border-color: rgba(42, 127, 143, 0.48);
-        color: var(--cyan);
+        background: rgba(255, 253, 248, 0.72);
+        font-size: 12px;
+        font-weight: 720;
       }
 
       .list {
@@ -488,36 +450,6 @@
 
       .item li + li {
         margin-top: 8px;
-      }
-
-      .pub-list {
-        border-top: 1px solid var(--line);
-      }
-
-      .pub {
-        display: grid;
-        grid-template-columns: 180px minmax(0, 1fr);
-        gap: 30px;
-        padding: 22px 0;
-        border-bottom: 1px solid var(--line);
-      }
-
-      .pub-title {
-        font-family: Georgia, "Times New Roman", serif;
-        font-size: 22px;
-        font-weight: 700;
-        line-height: 1.2;
-      }
-
-      .authors,
-      .venue {
-        margin-top: 8px;
-        color: var(--muted);
-        font-size: 15px;
-      }
-
-      .authors strong {
-        color: var(--ink);
       }
 
       .split {
@@ -581,6 +513,10 @@
       }
 
       @media (max-width: 980px) {
+        section {
+          scroll-margin-top: 118px;
+        }
+
         .layout {
           display: block;
         }
@@ -628,7 +564,6 @@
         .hero-grid,
         .section-head,
         .item,
-        .pub,
         .split,
         .contact-panel {
           grid-template-columns: 1fr;
@@ -699,7 +634,6 @@
         <nav class="nav">
           <a href="#research">Research</a>
           <a href="#work">Work</a>
-          <a href="#publications">Publications</a>
           <a href="#experience">Experience</a>
           <a href="#education">Education</a>
           <a href="#contact">Contact</a>
@@ -749,8 +683,8 @@
                 <span>GPA on a 100-point scale.</span>
               </div>
               <div class="metric">
-                <strong>4</strong>
-                <span>Current or recent research projects.</span>
+                <strong>3</strong>
+                <span>Ongoing research projects.</span>
               </div>
               <div class="metric">
                 <strong>300K</strong>
@@ -804,107 +738,70 @@
         <section id="work">
           <div class="wrap">
             <div class="section-head">
-              <div class="section-kicker">Selected Work</div>
+              <div class="section-kicker">Research Projects</div>
               <div>
-                <h2>Project Highlights</h2>
+                <h2>Work</h2>
+                <p class="section-subtitle">Ongoing Research Projects</p>
                 <p class="section-intro">
-                  A compact view of recent papers and benchmarks, with project pages for figures,
-                  abstracts, code, and reproducibility details.
+                  My current research focuses on world models for decision-making, self-improving
+                  World Action Models, and video-guided compositional 3D scene reconstruction.
+                  The following projects are ongoing and in preparation.
                 </p>
               </div>
             </div>
             <div class="work-grid">
               <article class="project-card">
-                <div class="project-media">
-                  <span class="project-tag">ARXIV 2026</span>
-                  <img src="assets/projects/baddreamer-card.webp" alt="BadDreamer pipeline overview figure.">
-                  <span class="project-badge">92.5% WM-ASR</span>
-                </div>
                 <div class="project-body">
-                  <h3>BadDreamer: Transferable Backdoor Attacks against Video World Models for Autonomous Driving</h3>
+                  <span class="project-status">OnGoing</span>
+                  <h3>World Models for Decision-Making: A Cross-Domain Survey</h3>
                   <p>
-                    A spatio-temporal backdoor attack that poisons video world-model transition
-                    dynamics, corrupts future-aware representations, and transfers unsafe behavior
-                    to downstream autonomous-driving planning.
+                    A cross-domain survey reframing world models as decision-making infrastructures,
+                    covering representation, dynamics, action modeling, simulation, planning,
+                    verification, and evaluation across physical, digital, and scientific domains.
                   </p>
-                  <div class="project-actions">
-                    <a class="project-link" href="https://arxiv.org/abs/2606.21172" target="_blank" rel="noopener">Paper</a>
-                    <a class="project-link" href="https://zheshuai0052.github.io/BadDreamer/" target="_blank" rel="noopener">Project</a>
+                  <div class="project-tags">
+                    <span>World Models</span>
+                    <span>Decision-Making</span>
+                    <span>Survey</span>
+                    <span>Taxonomy</span>
+                    <span>Planning</span>
                   </div>
                 </div>
               </article>
               <article class="project-card">
-                <div class="project-media">
-                  <span class="project-tag">BENCHMARK 2026</span>
-                  <img src="assets/projects/cesbench-card.webp" alt="CESBench benchmark construction pipeline figure.">
-                  <span class="project-badge">10,144 Qs</span>
-                </div>
                 <div class="project-body">
-                  <h3>CESBench: A Multi-Task Knowledge Benchmark for Construction Engineering Supervision</h3>
+                  <span class="project-status">OnGoing</span>
+                  <h3>FLARE-WAM: Failure-Driven Latent Action Refinement for Self-Improving World Action Models</h3>
                   <p>
-                    A regulation-intensive benchmark for evaluating LLMs on evidence-grounded
-                    compliance, safety reasoning, and field-oriented decision making in construction
-                    engineering supervision.
+                    A failure-driven framework for self-improving World Action Models, using latent
+                    transition residuals to revise hidden-rule beliefs, verify inverse actions, and
+                    rerank candidate actions under dynamics shifts.
                   </p>
-                  <div class="project-actions">
-                    <a class="project-link" href="https://zheshuai0052.github.io/CESBench/" target="_blank" rel="noopener">Project</a>
-                    <a class="project-link" href="https://github.com/HuaiNanPro/CESBench" target="_blank" rel="noopener">Code</a>
+                  <div class="project-tags">
+                    <span>World Action Models</span>
+                    <span>Self-Improvement</span>
+                    <span>Failure Reflection</span>
+                    <span>Hidden Dynamics</span>
+                    <span>Embodied Decision-Making</span>
                   </div>
                 </div>
               </article>
-            </div>
-          </div>
-        </section>
-
-        <section id="publications">
-          <div class="wrap">
-            <div class="section-head">
-              <div class="section-kicker">Publications</div>
-              <div>
-                <h2>Publications and Preprints</h2>
-                <p class="section-intro">
-                  Manuscripts include work under review, submitted work, and ongoing projects in preparation.
-                </p>
-              </div>
-            </div>
-            <div class="pub-list">
-              <article class="pub">
-                <div class="meta">Conference, under review</div>
-                <div>
-                  <div class="pub-title">BadDreamer: Backdoor Attacks against World Models for Autonomous Driving</div>
-                  <div class="authors"><strong>Shuai, Z.</strong> *, Xie, X. *, et al.</div>
-                  <div class="venue">Manuscript under review, Advances in Neural Information Processing Systems, 2026.</div>
-                </div>
-              </article>
-              <article class="pub">
-                <div class="meta">Conference, in preparation</div>
-                <div>
-                  <div class="pub-title">FLARE-WAM: Failure-driven Latent Action Refinement for Hidden Rule Adaptation</div>
-                  <div class="authors"><strong>Shuai, Z.</strong>, Zou, Y., et al.</div>
-                  <div class="venue">Manuscript in preparation for submission to ICLR 2027.</div>
-                </div>
-              </article>
-              <article class="pub">
-                <div class="meta">Conference, in preparation</div>
-                <div>
-                  <div class="pub-title">Video-guided Compositional 3D Scene Reconstruction and In-place Completion</div>
-                  <div class="authors"><strong>Shuai, Z.</strong> *, Chen, Y. *, Ni, B., et al.</div>
-                  <div class="venue">Manuscript in preparation for submission to ICLR 2027.</div>
-                </div>
-              </article>
-              <article class="pub">
-                <div class="meta">Journal, submitted</div>
-                <div>
-                  <div class="pub-title">CESBench: A Multi-task Knowledge Benchmark for Evaluating Large Language Models in Construction Engineering Supervision</div>
-                  <div class="authors">Xie, X., Ran, X., Wu, H., Dong, Z., Xia, B., Jiang, Y., Wang, Z., Sun, J., <strong>Shuai, Z.</strong>, Zhu, A., Zheng, G., Kong, L., and Xue, G.</div>
-                  <div class="venue">Manuscript submitted to IEEE Transactions on Knowledge and Data Engineering, 2026.</div>
-                </div>
-              </article>
-              <article class="pub">
-                <div class="meta">Patent, 2024</div>
-                <div>
-                  <div class="pub-title">AI-powered Urban Carbon Emission Reduction Modeling System</div>
-                  <div class="venue">Remote-sensing PV identification, emission estimation, and ArcGIS integration.</div>
+              <article class="project-card">
+                <div class="project-body">
+                  <span class="project-status">OnGoing</span>
+                  <h3>Video-Guided Compositional 3D Scene Reconstruction and In-Place Completion</h3>
+                  <p>
+                    An object-centric video-to-3D pipeline that fuses multi-view masks, tracks, depth,
+                    and point maps into compositional scene representations, then explores
+                    spatial-anchor-based in-place completion.
+                  </p>
+                  <div class="project-tags">
+                    <span>3D Reconstruction</span>
+                    <span>Video Understanding</span>
+                    <span>Object-Centric Representation</span>
+                    <span>In-Place Completion</span>
+                    <span>Spatial Intelligence</span>
+                  </div>
                 </div>
               </article>
             </div>
