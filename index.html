@@ -42,6 +42,17 @@
         line-height: 1.58;
       }
 
+      #cursor-trail {
+        position: fixed;
+        inset: 0;
+        z-index: 50;
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none;
+        background: transparent;
+        mix-blend-mode: multiply;
+      }
+
       a {
         color: inherit;
         text-underline-offset: 0.18em;
@@ -704,9 +715,16 @@
           padding: 24px;
         }
       }
+
+      @media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+        #cursor-trail {
+          display: none;
+        }
+      }
     </style>
   </head>
   <body>
+    <canvas id="cursor-trail" aria-hidden="true"></canvas>
     <div class="layout">
       <aside class="rail" aria-label="Site navigation">
         <div class="mark">
@@ -1188,5 +1206,105 @@
         </section>
       </main>
     </div>
+    <script>
+      (() => {
+        const canvas = document.getElementById("cursor-trail");
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+        const coarsePointer = window.matchMedia("(pointer: coarse)");
+        const noHover = window.matchMedia("(hover: none)");
+
+        if (!canvas || reducedMotion.matches || coarsePointer.matches || noHover.matches) {
+          if (canvas) canvas.hidden = true;
+          return;
+        }
+
+        const context = canvas.getContext("2d", { alpha: true });
+        if (!context) return;
+
+        const trail = [];
+        const maxPoints = 42;
+        const maxAge = 420;
+        const trailColor = "#e63946";
+        let width = 0;
+        let height = 0;
+        let rafId = null;
+
+        function resizeCanvas() {
+          const dpr = Math.min(window.devicePixelRatio || 1, 2);
+          width = window.innerWidth;
+          height = window.innerHeight;
+          canvas.width = Math.round(width * dpr);
+          canvas.height = Math.round(height * dpr);
+          canvas.style.width = `${width}px`;
+          canvas.style.height = `${height}px`;
+          context.setTransform(dpr, 0, 0, dpr, 0, 0);
+        }
+
+        function addPoint(event) {
+          if (event.pointerType && event.pointerType !== "mouse") return;
+
+          const now = performance.now();
+          trail.push({
+            x: event.clientX,
+            y: event.clientY,
+            time: now,
+          });
+
+          if (trail.length > maxPoints) {
+            trail.splice(0, trail.length - maxPoints);
+          }
+
+          if (!rafId) {
+            rafId = requestAnimationFrame(drawTrail);
+          }
+        }
+
+        function drawTrail(now) {
+          context.clearRect(0, 0, width, height);
+
+          while (trail.length && now - trail[0].time > maxAge) {
+            trail.shift();
+          }
+
+          if (trail.length > 1) {
+            context.lineCap = "round";
+            context.lineJoin = "round";
+
+            for (let index = 1; index < trail.length; index += 1) {
+              const previous = trail[index - 1];
+              const current = trail[index];
+              const age = Math.min(1, (now - current.time) / maxAge);
+              const opacity = Math.max(0, (1 - age) * 0.55);
+              const widthScale = Math.max(0.35, 1 - age);
+              const controlX = (previous.x + current.x) / 2;
+              const controlY = (previous.y + current.y) / 2;
+
+              context.globalAlpha = opacity;
+              context.strokeStyle = trailColor;
+              context.lineWidth = 2.2 + 2.2 * widthScale;
+              context.beginPath();
+              context.moveTo(previous.x, previous.y);
+              context.quadraticCurveTo(previous.x, previous.y, controlX, controlY);
+              context.stroke();
+            }
+          }
+
+          context.globalAlpha = 1;
+
+          if (trail.length) {
+            rafId = requestAnimationFrame(drawTrail);
+          } else {
+            rafId = null;
+          }
+        }
+
+        resizeCanvas();
+        window.addEventListener("resize", resizeCanvas, { passive: true });
+        window.addEventListener("pointermove", addPoint, { passive: true });
+        window.addEventListener("pointerleave", () => {
+          trail.length = 0;
+        });
+      })();
+    </script>
   </body>
 </html>
