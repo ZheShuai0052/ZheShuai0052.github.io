@@ -387,41 +387,14 @@
       }
 
       .project-card.with-media .project-body {
-        display: grid;
-        grid-template-columns: minmax(145px, 34%) minmax(0, 1fr);
-        grid-template-areas:
-          "status status"
-          "title title"
-          "thumb desc"
-          "actions actions"
-          "tags tags";
-        column-gap: 18px;
-        align-content: start;
-      }
-
-      .project-card.with-media .project-status {
-        grid-area: status;
-      }
-
-      .project-card.with-media .project-body h3 {
-        grid-area: title;
+        display: flex;
+        flex: 1;
+        flex-direction: column;
       }
 
       .project-card.with-media .project-thumb {
-        grid-area: thumb;
-        height: 140px;
-      }
-
-      .project-card.with-media .project-body p {
-        grid-area: desc;
-      }
-
-      .project-card.with-media .project-actions {
-        grid-area: actions;
-      }
-
-      .project-card.with-media .project-tags {
-        grid-area: tags;
+        width: 100%;
+        height: 168px;
       }
 
       .project-body h3 {
@@ -718,19 +691,8 @@
           grid-template-columns: 1fr;
         }
 
-        .project-card.with-media .project-body {
-          grid-template-columns: 1fr;
-          grid-template-areas:
-            "status"
-            "title"
-            "thumb"
-            "desc"
-            "actions"
-            "tags";
-        }
-
         .project-card.with-media .project-thumb {
-          height: 140px;
+          height: 150px;
         }
 
         .metric,
@@ -934,14 +896,14 @@
                 <div class="project-body">
                   <span class="project-status">OnGoing</span>
                   <h3>World Models for Decision-Making: A Cross-Domain Survey</h3>
+                  <figure class="project-thumb">
+                    <img src="assets/world-model-survey-framework.webp" alt="Survey framework for decision-oriented world models.">
+                  </figure>
                   <p>
                     A cross-domain survey reframing world models as decision-making infrastructures,
                     covering representation, dynamics, action modeling, simulation, planning,
                     verification, and evaluation across physical, digital, and scientific domains.
                   </p>
-                  <figure class="project-thumb">
-                    <img src="assets/world-model-survey-framework.webp" alt="Survey framework for decision-oriented world models.">
-                  </figure>
                   <div class="project-tags">
                     <span>World Models</span>
                     <span>Decision-Making</span>
