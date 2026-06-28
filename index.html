@@ -1222,9 +1222,10 @@
         if (!context) return;
 
         const trail = [];
-        const maxPoints = 42;
-        const maxAge = 420;
+        const maxPoints = 36;
+        const maxAge = 380;
         const trailColor = "#e63946";
+        const headRadius = 5.5;
         let width = 0;
         let height = 0;
         let rafId = null;
@@ -1266,27 +1267,39 @@
             trail.shift();
           }
 
-          if (trail.length > 1) {
+          if (trail.length) {
+            const latest = trail[trail.length - 1];
+            const headAge = Math.min(1, (now - latest.time) / maxAge);
+            const trailOpacity = Math.max(0, (1 - headAge) * 0.56);
+            const headOpacity = Math.max(0, (1 - headAge) * 0.82);
+
             context.lineCap = "round";
             context.lineJoin = "round";
 
-            for (let index = 1; index < trail.length; index += 1) {
-              const previous = trail[index - 1];
-              const current = trail[index];
-              const age = Math.min(1, (now - current.time) / maxAge);
-              const opacity = Math.max(0, (1 - age) * 0.55);
-              const widthScale = Math.max(0.35, 1 - age);
-              const controlX = (previous.x + current.x) / 2;
-              const controlY = (previous.y + current.y) / 2;
-
-              context.globalAlpha = opacity;
+            if (trail.length > 1) {
+              context.globalAlpha = trailOpacity;
               context.strokeStyle = trailColor;
-              context.lineWidth = 2.2 + 2.2 * widthScale;
+              context.lineWidth = 4.2;
               context.beginPath();
-              context.moveTo(previous.x, previous.y);
-              context.quadraticCurveTo(previous.x, previous.y, controlX, controlY);
+              context.moveTo(trail[0].x, trail[0].y);
+
+              for (let index = 1; index < trail.length - 1; index += 1) {
+                const current = trail[index];
+                const next = trail[index + 1];
+                const midpointX = (current.x + next.x) / 2;
+                const midpointY = (current.y + next.y) / 2;
+                context.quadraticCurveTo(current.x, current.y, midpointX, midpointY);
+              }
+
+              context.lineTo(latest.x, latest.y);
               context.stroke();
             }
+
+            context.globalAlpha = headOpacity;
+            context.fillStyle = trailColor;
+            context.beginPath();
+            context.arc(latest.x, latest.y, headRadius, 0, Math.PI * 2);
+            context.fill();
           }
 
           context.globalAlpha = 1;
