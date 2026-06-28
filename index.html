@@ -396,6 +396,33 @@
         font-size: 15px;
       }
 
+      .project-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 18px;
+      }
+
+      .project-link {
+        display: inline-flex;
+        min-height: 36px;
+        align-items: center;
+        justify-content: center;
+        padding: 7px 12px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 253, 248, 0.72);
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 760;
+        text-decoration: none;
+      }
+
+      .project-link:hover {
+        border-color: rgba(42, 127, 143, 0.48);
+        color: var(--cyan);
+      }
+
       .project-status {
         width: fit-content;
         margin-bottom: 22px;
@@ -432,6 +459,20 @@
         gap: 22px;
       }
 
+      .experience-block + .experience-block {
+        margin-top: 44px;
+      }
+
+      .subsection-title {
+        margin-bottom: 18px;
+        color: var(--green);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
       .item {
         display: grid;
         grid-template-columns: 180px minmax(0, 1fr);
@@ -450,7 +491,6 @@
         font-size: 13px;
         font-weight: 750;
         letter-spacing: 0.08em;
-        text-transform: uppercase;
       }
 
       .item h3 {
@@ -657,6 +697,7 @@
           <a href="#work">Work</a>
           <a href="#experience">Experience</a>
           <a href="#education">Education</a>
+          <a href="#honors">Honors</a>
           <a href="#contact">Contact</a>
         </nav>
         <div class="rail-contact">
@@ -704,8 +745,8 @@
                 <span>GPA on a 100-point scale.</span>
               </div>
               <div class="metric">
-                <strong>3</strong>
-                <span>Ongoing research projects.</span>
+                <strong>5</strong>
+                <span>recent and ongoing research projects.</span>
               </div>
               <div class="metric">
                 <strong>300K</strong>
@@ -762,15 +803,72 @@
               <div class="section-kicker">Research Projects</div>
               <div>
                 <h2>Work</h2>
-                <p class="section-subtitle">Ongoing Research Projects</p>
+                <p class="section-subtitle">Recent and Ongoing Research Projects</p>
                 <p class="section-intro">
-                  My current research focuses on world models for decision-making, self-improving
-                  World Action Models, and video-guided compositional 3D scene reconstruction.
-                  The following projects are ongoing and in preparation.
+                  A compact overview of my recent and ongoing research projects, spanning world models,
+                  self-improving action models, compositional 3D scene reconstruction, autonomous
+                  driving, and domain-specific LLM evaluation.
                 </p>
               </div>
             </div>
             <div class="work-grid">
+              <article class="project-card">
+                <div class="project-body">
+                  <span class="project-status">Recent / arXiv 2026</span>
+                  <h3>BadDreamer: Transferable Backdoor Attacks against Video World Models for Autonomous Driving</h3>
+                  <figure class="project-thumb">
+                    <img src="assets/projects/baddreamer-card.webp" alt="BadDreamer pipeline overview figure.">
+                  </figure>
+                  <p>
+                    BadDreamer studies the security vulnerabilities of autonomous-driving video world
+                    models. It introduces transferable spatio-temporal backdoor attacks that poison
+                    future prediction dynamics, corrupt future-aware representations, and induce unsafe
+                    downstream planning behavior. The project highlights how world models used for
+                    safety-critical decision-making can be compromised through subtle visual triggers
+                    and target disappearance supervision.
+                  </p>
+                  <div class="project-actions">
+                    <a class="project-link" href="https://arxiv.org/abs/2606.21172" target="_blank" rel="noopener">Paper</a>
+                    <a class="project-link" href="https://zheshuai0052.github.io/BadDreamer/" target="_blank" rel="noopener">Project</a>
+                    <a class="project-link" href="https://github.com/ZheShuai0052/BadDreamer" target="_blank" rel="noopener">Code</a>
+                  </div>
+                  <div class="project-tags">
+                    <span>Video World Models</span>
+                    <span>Autonomous Driving</span>
+                    <span>Backdoor Attack</span>
+                    <span>Trustworthy AI</span>
+                    <span>Decision Safety</span>
+                  </div>
+                </div>
+              </article>
+              <article class="project-card">
+                <div class="project-body">
+                  <span class="project-status">Recent / Benchmark 2026</span>
+                  <h3>CESBench: A Multi-Task Knowledge Benchmark for Construction Engineering Supervision</h3>
+                  <figure class="project-thumb">
+                    <img src="assets/projects/cesbench-card.webp" alt="CESBench benchmark construction pipeline figure.">
+                  </figure>
+                  <p>
+                    CESBench is a domain-specific benchmark for evaluating large language models in
+                    construction engineering supervision. It focuses on evidence-grounded compliance,
+                    safety reasoning, regulation-intensive decision-making, and field-oriented knowledge
+                    tasks. The benchmark reflects my broader interest in trustworthy and domain-aware
+                    AI systems, especially in high-stakes professional scenarios where model outputs
+                    must be grounded in standards, evidence, and expert practice.
+                  </p>
+                  <div class="project-actions">
+                    <a class="project-link" href="https://zheshuai0052.github.io/CESBench/" target="_blank" rel="noopener">Project</a>
+                    <a class="project-link" href="https://github.com/ZheShuai0052/CESBench" target="_blank" rel="noopener">Code</a>
+                  </div>
+                  <div class="project-tags">
+                    <span>LLM Evaluation</span>
+                    <span>Benchmark</span>
+                    <span>Construction Engineering</span>
+                    <span>Regulation Reasoning</span>
+                    <span>Trustworthy AI</span>
+                  </div>
+                </div>
+              </article>
               <article class="project-card">
                 <div class="project-body">
                   <span class="project-status">OnGoing</span>
@@ -838,98 +936,99 @@
             <div class="section-head">
               <div class="section-kicker">Experience</div>
               <div>
-                <h2>Research Experience</h2>
+                <h2>Experience</h2>
                 <p class="section-intro">
-                  Selected projects across embodied AI, spatial intelligence, autonomous driving, and LLM evaluation.
+                  Selected research and professional work across embodied AI, spatial intelligence,
+                  autonomous driving, domain-specific LLM evaluation, and AI product systems.
                 </p>
               </div>
             </div>
-            <div class="list">
-              <article class="item">
-                <div class="meta">Apr. 2026 - Present</div>
-                <div>
-                  <h3>FLARE-WAM: Failure-Driven World Action Models under Hidden Dynamics Shifts</h3>
-                  <p>Research Assistant, Prof. YingTian Zou, SJTU SAI.</p>
-                  <ul>
-                    <li>Formulated failure modes in action-conditioned world models caused by hidden dynamics shifts.</li>
-                    <li>Engineered a closed-loop framework integrating latent residuals, inverse action verification, and dynamic candidate reranking.</li>
-                    <li>Built and evaluated VRST-PuzzleGrid with OOD-rule and OOD-composition splits under a strict no-oracle-target protocol.</li>
-                  </ul>
-                </div>
-              </article>
-              <article class="item">
-                <div class="meta">Apr. 2026 - Present</div>
-                <div>
-                  <h3>Vid2Layout: Compositional 3D Scene Reconstruction</h3>
-                  <p>Research Assistant, Prof. BingBing Ni, SJTU Intelligent Media Lab.</p>
-                  <ul>
-                    <li>Designed a multi-stage video-to-3D reconstruction pipeline with keyframe sampling, open-vocabulary object discovery, mask-track association, depth fusion, and 2D-to-3D grounding.</li>
-                    <li>Built object-level multi-view partial geometry representations and video-conditioned spatial anchors.</li>
-                    <li>Explored in-place completion and memory-based training, improving multi-view geometry recovery over single-view input in preliminary ablations.</li>
-                  </ul>
-                </div>
-              </article>
-              <article class="item">
-                <div class="meta">Nov. 2025 - May 2026</div>
-                <div>
-                  <h3>BadDreamer: Backdoor Attacks on Autonomous Driving Video World Models</h3>
-                  <p>Research Assistant, Prof. Guanjie Zheng, SJTU CILAB.</p>
-                  <ul>
-                    <li>Studied spatio-temporal trigger injection and semantic erasure attacks for future prediction.</li>
-                    <li>Designed a stealthy trigger-target backdoor pair using image inpainting for target disappearance supervision.</li>
-                    <li>Built an end-to-end evaluation pipeline, achieving 92.5% WM-ASR and 90.3% Action-ASR with 5% poisoned data.</li>
-                  </ul>
-                </div>
-              </article>
-              <article class="item">
-                <div class="meta">Oct. 2025 - Feb. 2026</div>
-                <div>
-                  <h3>CESBench: Construction Engineering Supervision Benchmark</h3>
-                  <p>Research Assistant, Prof. Guanjie Zheng, SJTU CILAB.</p>
-                  <ul>
-                    <li>Designed a data pipeline integrating RAG and expert-in-the-loop annotation from national standards and field logs.</li>
-                    <li>Evaluated 18 frontier LLMs in high-stakes construction supervision scenarios in collaboration with Shanghai Jianke.</li>
-                    <li>Developed evidence-grounded metrics including Strict Compliance Score and Pass@k.</li>
-                  </ul>
-                </div>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <section>
-          <div class="wrap">
-            <div class="section-head">
-              <div class="section-kicker">Industry</div>
-              <div>
-                <h2>Professional Experience</h2>
+            <div class="experience-block">
+              <h3 class="subsection-title">Research Experience</h3>
+              <div class="list">
+                <article class="item">
+                  <div class="meta">Apr. 2026 - Present</div>
+                  <div>
+                    <h3>FLARE-WAM: Failure-Driven World Action Models under Hidden Dynamics Shifts</h3>
+                    <p>Research Assistant, Prof. YingTian Zou, SJTU SAI.</p>
+                    <ul>
+                      <li>Formulated failure modes in action-conditioned world models caused by hidden dynamics shifts.</li>
+                      <li>Engineered a closed-loop framework integrating latent residuals, inverse action verification, and dynamic candidate reranking.</li>
+                      <li>Built and evaluated VRST-PuzzleGrid with OOD-rule and OOD-composition splits under a strict no-oracle-target protocol.</li>
+                    </ul>
+                  </div>
+                </article>
+                <article class="item">
+                  <div class="meta">Apr. 2026 - Present</div>
+                  <div>
+                    <h3>Vid2Layout: Compositional 3D Scene Reconstruction</h3>
+                    <p>Research Assistant, Prof. BingBing Ni, SJTU Intelligent Media Lab.</p>
+                    <ul>
+                      <li>Designed a multi-stage video-to-3D reconstruction pipeline with keyframe sampling, open-vocabulary object discovery, mask-track association, depth fusion, and 2D-to-3D grounding.</li>
+                      <li>Built object-level multi-view partial geometry representations and video-conditioned spatial anchors.</li>
+                      <li>Explored in-place completion and memory-based training, improving multi-view geometry recovery over single-view input in preliminary ablations.</li>
+                    </ul>
+                  </div>
+                </article>
+                <article class="item">
+                  <div class="meta">Nov. 2025 - May 2026</div>
+                  <div>
+                    <h3>BadDreamer: Backdoor Attacks on Autonomous Driving Video World Models</h3>
+                    <p>Research Assistant, Prof. Guanjie Zheng, SJTU CILAB.</p>
+                    <ul>
+                      <li>Studied spatio-temporal trigger injection and semantic erasure attacks for future prediction.</li>
+                      <li>Designed a stealthy trigger-target backdoor pair using image inpainting for target disappearance supervision.</li>
+                      <li>Built an end-to-end evaluation pipeline, achieving 92.5% WM-ASR and 90.3% Action-ASR with 5% poisoned data.</li>
+                    </ul>
+                  </div>
+                </article>
+                <article class="item">
+                  <div class="meta">Oct. 2025 - Feb. 2026</div>
+                  <div>
+                    <h3>CESBench: Construction Engineering Supervision Benchmark</h3>
+                    <p>Research Assistant, Prof. Guanjie Zheng, SJTU CILAB.</p>
+                    <ul>
+                      <li>Designed a data pipeline integrating RAG and expert-in-the-loop annotation from national standards and field logs.</li>
+                      <li>Evaluated 18 frontier LLMs in high-stakes construction supervision scenarios in collaboration with Shanghai Jianke.</li>
+                      <li>Developed evidence-grounded metrics including Strict Compliance Score and Pass@k.</li>
+                    </ul>
+                  </div>
+                </article>
               </div>
             </div>
-            <div class="list">
-              <article class="item">
-                <div class="meta">Sept. 2025 - Dec. 2025</div>
-                <div>
-                  <h3>Apple Inc., Product Manager Intern</h3>
-                  <p>Shanghai, China.</p>
-                  <ul>
-                    <li>Conducted an AI Glasses industry landscape study covering Micro-LED, optical solutions, and supply-chain dynamics.</li>
-                    <li>Led AppleCare+ competitive analysis across pricing ratio, coverage scope, value-added benefits, regional terms, and repair fees.</li>
-                    <li>Mapped serial number management workflows across hardware production and after-sales service.</li>
-                  </ul>
-                </div>
-              </article>
-              <article class="item">
-                <div class="meta">Aug. 2024 - Aug. 2025</div>
-                <div>
-                  <h3>Shanghai Jiangran Technology Co., Ltd., Co-Founder</h3>
-                  <p>Vertical-industry AI Agent company, Shanghai, China.</p>
-                  <ul>
-                    <li>Defined the core interaction paradigm and managed the product lifecycle from concept to MVP deployment.</li>
-                    <li>Delivered a customized marketing agent for a top-tier pharmaceutical firm, generating CNY 100,000 in early revenue.</li>
-                    <li>Raised USD 300,000 in angel investment from MiraclePlus.</li>
-                  </ul>
-                </div>
-              </article>
+            <div class="experience-block">
+              <h3 class="subsection-title">Professional Experience</h3>
+              <div class="list">
+                <article class="item">
+                  <div class="meta">Shanghai, Sep. 2025 – Dec. 2025</div>
+                  <div>
+                    <h3>Apple Inc. — Product Manager Intern</h3>
+                    <p>
+                      Worked on product research and system design tasks related to AI Glasses,
+                      AppleCare+ service products, spatial computing, and internal SN management
+                      systems. Conducted competitor research, product requirement analysis, process
+                      optimization, and cross-functional documentation to support future product
+                      opportunity exploration.
+                    </p>
+                  </div>
+                </article>
+                <article class="item">
+                  <div class="meta">Shanghai, Aug. 2024 – Sep. 2025</div>
+                  <div>
+                    <h3>Shanghai Jiangran Technology Co., Ltd. / Emagen.ai — Co-Founder</h3>
+                    <p>
+                      Co-founded an AI Agent startup focused on human-AI collaborative intelligent
+                      systems. Led top-level product architecture and core interaction design, defined
+                      agent interaction paradigms for cross-industry users, and drove prototype
+                      development and version iteration from 0 to 1. Conducted in-depth research into
+                      marketing and operations scenarios, extracted high-frequency business pain
+                      points, and translated them into enterprise-oriented AI Agent solutions. Led a
+                      strategic partnership with a leading pharmaceutical company, customized and
+                      deployed an intelligent marketing agent system, achieved CNY 100,000 paid conversion in the first phase, and helped the team receive USD 300,000 in angel investment from MiraclePlus.
+                    </p>
+                  </div>
+                </article>
+              </div>
             </div>
           </div>
         </section>
@@ -947,17 +1046,14 @@
                 <ul class="compact-list">
                   <li>
                     <strong>Shanghai Jiao Tong University</strong>
-                    <span>Bachelor of Architecture, Minor in Computer Science and Technology. Expected graduation: June 2027.</span>
-                    <span>GPA: 90.83/100. Ranking: 1/25.</span>
+                    <span>Bachelor of Architecture, Minor in Computer Science and Technology.</span>
+                    <span>Expected graduation: June 2027.</span>
+                    <span>GPA: 90.83/100; Ranking: 1/25.</span>
                   </li>
                   <li>
                     <strong>MITx MicroMasters Program in Statistics and Data Science</strong>
-                    <span>Graduate-level online course program, June 2025 - Present.</span>
+                    <span>Graduate-level online program, June 2025 – Present.</span>
                     <span>Coursework includes probability, machine learning, statistics, and statistical modeling.</span>
-                  </li>
-                  <li>
-                    <strong>Awards and Honors</strong>
-                    <span>National Scholarship, 2024 and 2025. Xiaomi Scholarship, 2023. Gold Award, China International College Students' Innovation Competition, 2024.</span>
                   </li>
                 </ul>
               </div>
@@ -974,6 +1070,68 @@
                   <li>
                     <strong>Relevant Coursework</strong>
                     <span>Data Structures, Operating Systems, Software Engineering, Big Data Algorithms and Analytics, Computer Networks, Machine Learning.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="honors">
+          <div class="wrap">
+            <div class="section-head">
+              <div class="section-kicker">Honors</div>
+              <div>
+                <h2>Honors & Awards</h2>
+                <p class="section-subtitle">Selected honors, scholarships, and awards</p>
+                <p class="section-intro">
+                  Selected recognitions for academic excellence, interdisciplinary achievement, and
+                  competition performance.
+                </p>
+              </div>
+            </div>
+            <div class="split">
+              <div class="honors-block">
+                <h3 class="subsection-title">Honors & Scholarships</h3>
+                <ul class="compact-list">
+                  <li>
+                    <strong>Model Merit Student Award, Shanghai Jiao Tong University</strong>
+                    <span>2024, One of SJTU’s highest student honors.</span>
+                  </li>
+                  <li>
+                    <strong>National Scholarship</strong>
+                    <span>2024 and 2025.</span>
+                  </li>
+                  <li>
+                    <strong>Xiaomi Scholarship</strong>
+                    <span>2023.</span>
+                  </li>
+                  <li>
+                    <strong>SJTU Academic Scholarship, Class A</strong>
+                  </li>
+                  <li>
+                    <strong>SJTU Merit Student Award</strong>
+                    <span>2023, 2024, and 2025.</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="honors-block">
+                <h3 class="subsection-title">Awards</h3>
+                <ul class="compact-list">
+                  <li>
+                    <strong>Gold Award, China International College Students’ Innovation Competition, Shanghai Division</strong>
+                  </li>
+                  <li>
+                    <strong>First Prize, National College Student Mathematics Competition, Non-Mathematics Track</strong>
+                  </li>
+                  <li>
+                    <strong>First Prize, National College Student Physics Competition</strong>
+                  </li>
+                  <li>
+                    <strong>Second Prize, National Undergraduate Steel Structure Competition</strong>
+                  </li>
+                  <li>
+                    <strong>Third Place, East China Debate Championship</strong>
                   </li>
                 </ul>
               </div>
